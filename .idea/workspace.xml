@@ -5,7 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3edb9f1d-33b2-4580-8246-2b623c851fed" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/womensshop/Accessoire.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/womensshop/Accessoire.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/womensshop/Chaussure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/womensshop/Chaussure.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/womensshop/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/womensshop/HelloApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/womensshop/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/womensshop/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/womensshop/Produit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/womensshop/Produit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/womensshop/Solde.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/womensshop/Solde.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/womensshop/Vetement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/womensshop/Vetement.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/womensshop/hello-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/womensshop/hello-view.fxml" afterDir="false" />
     </list>
@@ -14,8 +22,19 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="Interface" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2GTumo8iLFV8ycBh1dZJf2HzuuW" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -29,9 +48,34 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "dart.analysis.tool.window.visible": "false",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
     "show.migrate.to.gradle.popup": "false"
   }
 }]]></component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.example.womensshop.Main" />
+      <module name="Womens-shop" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.womensshop.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -40,7 +84,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1666425056718</updated>
-      <workItem from="1666425058069" duration="1000" />
+      <workItem from="1666425058069" duration="952000" />
+      <workItem from="1666714767543" duration="9621000" />
     </task>
     <servers />
   </component>
