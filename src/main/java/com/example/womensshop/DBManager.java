@@ -19,7 +19,7 @@ public class DBManager {
      */
     public Connection Connector(){
         try {
-            return DriverManager.getConnection("jdbc:mysql://localhost:3306/womensShop?serverTimezone=Europe%2FParis", "","");
+            return DriverManager.getConnection("jdbc:mysql://localhost:3306/womensShop?serverTimezone=Europe%2FParis", "user","password");
         }
         catch (Exception e) {
             e.printStackTrace();
