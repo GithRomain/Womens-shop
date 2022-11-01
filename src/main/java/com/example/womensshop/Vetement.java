@@ -51,6 +51,9 @@ public class Vetement extends Produit{
      * @param taille
      */
     public void setTaille(int taille) {
+        if (taille < 34 || taille > 54 || taille % 2 != 0){
+            throw new IllegalArgumentException("Taille erronée");
+        }
         this.taille = taille;
     }
 

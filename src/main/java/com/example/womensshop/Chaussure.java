@@ -51,6 +51,9 @@ public class Chaussure extends Produit{
      * @param pointure
      */
     public void setPointure(int pointure) {
+        if (pointure < 36 || pointure > 50){
+            throw new IllegalArgumentException("Pointure erronée");
+        }
         this.pointure = pointure;
     }
 

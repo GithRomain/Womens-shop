@@ -4,18 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3edb9f1d-33b2-4580-8246-2b623c851fed" name="Changes" comment="">
+    <list default="true" id="3edb9f1d-33b2-4580-8246-2b623c851fed" name="Changes" comment="java end&#10;need : bonus + mysql + fx">
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/womensshop/DBManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/womensshop/Accessoire.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/womensshop/Accessoire.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/womensshop/Chaussure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/womensshop/Chaussure.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/womensshop/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/womensshop/HelloApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/womensshop/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/womensshop/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/womensshop/Produit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/womensshop/Produit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/womensshop/Solde.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/womensshop/Solde.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/womensshop/Vetement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/womensshop/Vetement.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/womensshop/hello-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/womensshop/hello-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,8 +23,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -46,6 +44,7 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "dart.analysis.tool.window.visible": "false",
     "node.js.detected.package.eslint": "true",
@@ -53,7 +52,16 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.keymap",
     "show.migrate.to.gradle.popup": "false"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
+    ]
   }
 }]]></component>
   <component name="RunManager">
@@ -85,8 +93,18 @@
       <option name="presentableId" value="Default" />
       <updated>1666425056718</updated>
       <workItem from="1666425058069" duration="952000" />
-      <workItem from="1666714767543" duration="9621000" />
+      <workItem from="1666714767543" duration="10023000" />
+      <workItem from="1666785248959" duration="598000" />
+      <workItem from="1666981290309" duration="23566000" />
     </task>
+    <task id="LOCAL-00001" summary="java end&#10;need : bonus + mysql + fx">
+      <created>1666736993802</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1666736993802</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -102,5 +120,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="java end&#10;need : bonus + mysql + fx" />
+    <option name="LAST_COMMIT_MESSAGE" value="java end&#10;need : bonus + mysql + fx" />
   </component>
 </project>

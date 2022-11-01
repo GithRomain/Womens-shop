@@ -6,22 +6,21 @@
  */
 package com.example.womensshop;
 
+import java.util.*;
+
 /**
  * La class Produit represente un produit et implemente les soldes
  * Sert de base a plusieurs sous classe comme Vetement, Chaussure et Accessoire
  * @see Solde
+ * @see Comparable
  * @author romainpasquier
  **/
-public abstract class Produit implements Solde{
+public abstract class Produit implements Solde, Comparable<Produit>{
     //Attributs
     /**
-     * num est le nombre total de produit créé
+     * num est l'identifiant du produit
      */
-    private static int num;
-    /**
-     * numero est le numéro d'un produit il est auto incrémenté lorsqu'un nouveau produit est créé
-     */
-    private int numero;
+    private int num = 0;
     /**
      * nom est le nom du produit
      */
@@ -33,11 +32,25 @@ public abstract class Produit implements Solde{
     /**
      * nbExemplaires représente le nombre d'exemplaire > 0 d'un produit donnée
      */
-    private int nbExemmplaires;
+    private int nbExemplaires;
     /**
      * recette représente le nombre total des recettes du magasin
      */
     private static int recette = 0;
+    /**
+     * produitcollection représente une collection de tous les produits créés trié par Type (ajout automatique)
+     */
+    private static List<List<Produit>> produitList = new ArrayList<>(){
+        {
+            add(new LinkedList<>());
+            add(new LinkedList<>());
+            add(new LinkedList<>());
+        }
+    };
+    /**
+     * cost représente tous l'argent que le magasin dépense
+     */
+    private static double cost = 0;
 
     //Constructeur
     /**
@@ -55,11 +68,11 @@ public abstract class Produit implements Solde{
         }
         this.nom = nom;
         this.prix = prix;
-        this.nbExemmplaires = nbExemmplaires;
-        //incrémente le compteur général
-        num++;
-        //set le numéro du produit créé
-        setNumero(getNum());
+        this.nbExemplaires = nbExemmplaires;
+        //ajout du produit créé à la collection
+        if (Vetement.class.equals(getClass())) produitList.get(0).add(this);
+        else if (Chaussure.class.equals(getClass())) produitList.get(1).add(this);
+        else if (Accessoire.class.equals(getClass()))  produitList.get(2).add(this);
     }
 
     //Getters
@@ -67,15 +80,8 @@ public abstract class Produit implements Solde{
      * Getter de l'attribut num
      * @return la valeur de l'attribut num
      */
-    public static int getNum() {
+    public int getNum() {
         return num;
-    }
-    /**
-     * Getter de l'attribut numero
-     * @return la valeur de l'attribut numero
-     */
-    public int getNumero() {
-        return numero;
     }
     /**
      * Getter de l'attribut nom
@@ -95,8 +101,8 @@ public abstract class Produit implements Solde{
      * Getter de l'attribut nbExemplaires
      * @return la valeur de l'attribut nbExemplaires
      */
-    public int getNbExemmplaires() {
-        return nbExemmplaires;
+    public int getNbExemplaires() {
+        return nbExemplaires;
     }
     /**
      * Getter de l'attribut recette
@@ -105,21 +111,28 @@ public abstract class Produit implements Solde{
     public static int getRecette() {
         return recette;
     }
+    /**
+     * Getter de l'attribut produitList
+     * @return la collection produitList
+     */
+    public static List<List<Produit>> getProduitList() {
+        return produitList;
+    }
+    /**
+     * Getter de l'attribut cost
+     * @return la valeur de l'attribut cost
+     */
+    public static double getCost() {
+        return cost;
+    }
 
     //Setters
     /**
-     * Le setter de num
+     * Setter de num
      * @param num
      */
-    public static void setNum(int num) {
-        Produit.num = num;
-    }
-    /**
-     * Le setter de numero
-     * @param numero
-     */
-    public void setNumero(int numero) {
-        this.numero = numero;
+    public void setNum(int num) {
+        this.num = num;
     }
     /**
      * Le setter de nom
@@ -141,14 +154,14 @@ public abstract class Produit implements Solde{
     }
     /**
      * Le setter de nbExemplaire
-     * @param nbExemmplaires
+     * @param nbExemplaires
      * @exception IllegalArgumentException
      */
-    public void setNbExemmplaires(int nbExemmplaires) {
-        if (nbExemmplaires < 0){
+    public void setNbExemplaires(int nbExemplaires) {
+        if (nbExemplaires < 0){
             throw new IllegalArgumentException("Nombre d'exemplaire négatif");
         }
-        this.nbExemmplaires = nbExemmplaires;
+        this.nbExemplaires = nbExemplaires;
     }
     /**
      * Le setter de recette
@@ -157,7 +170,20 @@ public abstract class Produit implements Solde{
     public static void setRecette(int recette) {
         Produit.recette = recette;
     }
-
+    /**
+     * Le setter de produitList
+     * @param produitList
+     */
+    public static void setProduitList(List<List<Produit>> produitList) {
+        Produit.produitList = produitList;
+    }
+    /**
+     * Le setter de cost
+     * @param cost
+     */
+    public static void setCost(double cost) {
+        Produit.cost = cost;
+    }
     //Methods
     /**
      * Méthode de vente d'un produit qui actualise l'attribu nbExemplaire et l'attribu recette
@@ -168,21 +194,26 @@ public abstract class Produit implements Solde{
         if (nbEx < 0) {
             throw new IllegalArgumentException("Nombre demandé à la vente érroné");
         }
-        else if (nbEx > nbExemmplaires){
+        else if (nbEx > nbExemplaires){
             throw new IllegalArgumentException("Produit indisponible");
         }
-        nbExemmplaires -= nbEx;
+        nbExemplaires -= nbEx;
         recette += nbEx * prix;
     }
     /**
      * Méthode d'achat d'un produit qui actualise l'attribu nbExemplaire
      * @param nbEx positif
+     * @exception IllegalArgumentException
      */
-    public void achat(int nbEx) {
+    public void achat(int nbEx, double purchasePrice) {
         if (nbEx < 0){
             throw new IllegalArgumentException("Nombre demandé à l'achat erroné");
         }
-        nbExemmplaires += nbEx;
+        if (purchasePrice >= prix){
+            throw new IllegalArgumentException("Prix d'achat plus cher que le prix de vente");
+        }
+        nbExemplaires += nbEx;
+        cost += nbEx * purchasePrice;
     }
     /**
      * Méthode remise qui solde à 30%, 20% et 50% les Vetements, Chaussures et Accessoires
@@ -190,12 +221,25 @@ public abstract class Produit implements Solde{
      */
     @Override
     public void remise() {
-        if (Vetement.class.equals(getClass())) {
-            setPrix(getPrix() * 0.3);
-        } else if (Chaussure.class.equals(getClass())) {
-            setPrix(getPrix() * 0.2);
-        } else if (Accessoire.class.equals(getClass())) {
-            setPrix(getPrix() * 0.5);
+        if (Vetement.class.equals(getClass())) setPrix(getPrix() * 0.3);
+        else if (Chaussure.class.equals(getClass())) setPrix(getPrix() * 0.2);
+        else if (Accessoire.class.equals(getClass())) setPrix(getPrix() * 0.5);
+    }
+    /**
+     * Méthode de comparaison des prix des produits avec un double
+     * @param produit the object to be compared.
+     * @return 1, -1, 0
+     */
+    @Override
+    public int compareTo(Produit produit) {
+        return Double.compare(this.prix, produit.prix);
+    }
+    /**
+     * Méthode pour trier l'attribut produitList grâce à la fonction de comparaison compareTo
+     */
+    public static void sortList(){
+        for (List<Produit> produitCollection : produitList){
+            Collections.sort(produitCollection);
         }
     }
     /**
@@ -206,10 +250,8 @@ public abstract class Produit implements Solde{
     public String toString() {
         return  getClass().toString().substring(29) +
                 "\n{" +
-                "\nnumero: " + numero +
                 "\nnom: " + nom +
                 "\nprix: " + prix +
-                "\nnbExemmplaires: " + nbExemmplaires +
-                "\nrecette: " + recette;
+                "\nnbExemmplaires: " + nbExemplaires;
     }
 }
