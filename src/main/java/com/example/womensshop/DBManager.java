@@ -217,8 +217,9 @@ public class DBManager {
      * @param newNbExemplaires
      * @param newTaille
      * @param newPointure
+     * @exception Exception
      */
-    public void updateProduct(Produit produit, Object newNom, Object newPrix, Object newNbExemplaires, Object newTaille, Object newPointure){
+    public void updateProduct(Produit produit, Object newNom, Object newPrix, Object newNbExemplaires, Object newTaille, Object newPointure) throws SQLException {
         Connection myConn = null;
         PreparedStatement myStmt = null;
         ResultSet myRs = null;
@@ -272,7 +273,7 @@ public class DBManager {
             }
         }
         catch(Exception e){
-            System.out.println(e.getMessage());
+            throw e;
         }
         finally{
             close(myConn, myStmt, myRs);
