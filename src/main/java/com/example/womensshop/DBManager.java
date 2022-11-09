@@ -281,8 +281,6 @@ public class DBManager {
     }
     /**
      * Methode d'update le bilan de l'entreprise dans la BDD
-     * @param cost,
-     * @param recette
      */
     public void updateInfo(){
         Connection myConn = null;
