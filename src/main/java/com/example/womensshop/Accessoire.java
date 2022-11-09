@@ -24,6 +24,17 @@ public class Accessoire extends Produit{
         super(nom, prix, nbExemmplaires);
     }
 
+    /**
+     * Constructeur à paramètre d'un accessoire + num de type Produit
+     * @param num
+     * @param nom
+     * @param prix
+     * @param nbExemmplaires
+     */
+    public Accessoire(int num, String nom, double prix, int nbExemmplaires) {
+        super(num, nom, prix, nbExemmplaires);
+    }
+
     //Methods
     /**
      * La méthode toString
@@ -31,7 +42,6 @@ public class Accessoire extends Produit{
      */
     @Override
     public String toString() {
-        return super.toString() +
-                "\n}";
+        return super.toString();
     }
 }

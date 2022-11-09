@@ -7,6 +7,10 @@
 package com.example.womensshop;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * La class DBManager represente la classe qui communique avec notre BDD en MySQL
@@ -14,12 +18,44 @@ import java.sql.*;
  **/
 public class DBManager {
     /**
+     * produitcollection représente une collection de tous les produits créés trié par Type (ajout automatique)
+     */
+    private static List<List<Produit>> produitList = new ArrayList<>(){
+        {
+            add(new LinkedList<>());
+            add(new LinkedList<>());
+            add(new LinkedList<>());
+        }
+    };
+    /**
+     * Getter de l'attribut produitList
+     * @return la collection produitList
+     */
+    public static List<List<Produit>> getProduitList() {
+        return produitList;
+    }
+    /**
+     * Le setter de produitList
+     * @param produitList
+     */
+    public static void setProduitList(List<List<Produit>> produitList) {
+        DBManager.produitList = produitList;
+    }
+    /**
+     * Méthode pour trier l'attribut produitList grâce à la fonction de comparaison compareTo
+     */
+    public static void sortList(){
+        for (List<Produit> produitCollection : produitList){
+            Collections.sort(produitCollection);
+        }
+    }
+    /**
      * Method pour obtenir la connexion à la BDD mySQL
      * @return connection
      */
     public Connection Connector(){
         try {
-            return DriverManager.getConnection("jdbc:mysql://localhost:3306/womensShop?serverTimezone=Europe%2FParis", "user","password");
+            return DriverManager.getConnection("jdbc:mysql://localhost:3306/womensShop?serverTimezone=Europe%2FParis", "","");
         }
         catch (Exception e) {
             e.printStackTrace();
@@ -43,6 +79,75 @@ public class DBManager {
         }
         catch(Exception e){
             System.out.println(e.getMessage());
+        }
+    }
+
+    /**
+     * Méthode pour attribuer à ma liste d'attribut tous les produits dans la BDD (on les tri par types)
+     */
+    public void loadProduct(){
+        Connection myConn = this.Connector();
+        List<List<Produit>> listReset = new ArrayList<>(){
+            {
+                add(new LinkedList<>());
+                add(new LinkedList<>());
+                add(new LinkedList<>());
+            }
+        };
+        //Reset the list for updating this one
+        DBManager.setProduitList(listReset);
+        try {
+            Statement myStmt = myConn.createStatement();
+
+            String sqlVetement = "select * from produit join vetement on produit.num = vetement.num";
+            ResultSet myRsVetement = myStmt.executeQuery(sqlVetement);
+            while (myRsVetement.next()) {
+                Produit vetement = new Vetement(myRsVetement.getInt("num"), myRsVetement.getString("nom"), myRsVetement.getDouble("prix"), myRsVetement.getInt("nbExemplaires"), myRsVetement.getInt("taille"));
+                produitList.get(0).add(vetement);
+            }
+
+            String sqlChaussure = "select * from produit join chaussure on produit.num = chaussure.num";
+            ResultSet myRsChaussure = myStmt.executeQuery(sqlChaussure);
+            while (myRsChaussure.next()) {
+                Produit chaussure = new Chaussure(myRsChaussure.getInt("num"), myRsChaussure.getString("nom"), myRsChaussure.getDouble("prix"), myRsChaussure.getInt("nbExemplaires"), myRsChaussure.getInt("pointure"));
+                produitList.get(1).add(chaussure);
+            }
+
+            String sqlAccessoire = "select * from produit join accessoire on produit.num = accessoire.num";
+            ResultSet myRsAccessoire = myStmt.executeQuery(sqlAccessoire);
+            while (myRsAccessoire.next()) {
+                Produit accessoire = new Accessoire(myRsAccessoire.getInt("num"), myRsAccessoire.getString("nom"), myRsAccessoire.getDouble("prix"), myRsAccessoire.getInt("nbExemplaires"));
+                produitList.get(2).add(accessoire);
+            }
+            this.close(myConn, myStmt, myRsVetement);
+            this.close(myConn, myStmt, myRsChaussure);
+            this.close(myConn, myStmt, myRsAccessoire);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Méthode qui permet de selectionner mes infos dans la BDD (cost et recette) sur une et unique ligne
+     */
+    public void selectInfo(){
+        Connection myConn = this.Connector();
+        try {
+            Statement myStmt = myConn.createStatement();
+
+            String sql = "select * from INFO";
+            ResultSet myRs = myStmt.executeQuery(sql);
+            while (myRs.next()) {
+                Produit.setCost(myRs.getDouble("cost"));
+                Produit.setRecette(myRs.getDouble("recette"));
+            }
+            this.close(myConn, myStmt, myRs);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
     /**
@@ -165,6 +270,32 @@ public class DBManager {
                 //Symbolique
                 System.out.println("Update accessoire ok");
             }
+        }
+        catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+        finally{
+            close(myConn, myStmt, myRs);
+        }
+    }
+    /**
+     * Methode d'update le bilan de l'entreprise dans la BDD
+     * @param cost,
+     * @param recette
+     */
+    public void updateInfo(){
+        Connection myConn = null;
+        PreparedStatement myStmt = null;
+        ResultSet myRs = null;
+        try {
+            myConn = this.Connector();
+
+            String sql = "UPDATE INFO SET cost = ?, recette = ? WHERE id = 0";
+            myStmt = myConn.prepareStatement(sql);
+            myStmt.setDouble(1, Produit.getCost());
+            myStmt.setDouble(2, Produit.getRecette());
+            myStmt.executeUpdate();
+            System.out.println("Update product ok");
         }
         catch(Exception e){
             System.out.println(e.getMessage());

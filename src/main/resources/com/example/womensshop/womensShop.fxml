@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="899.0" prefWidth="1141.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.womensshop.WomensShopController">
+   <children>
+      <ListView fx:id="listVetement" layoutX="15.0" layoutY="38.0" prefHeight="229.0" prefWidth="291.0" />
+      <ComboBox fx:id="chooseTypeBox" layoutX="417.0" layoutY="113.0" prefWidth="150.0" />
+      <Label fx:id="lblListVetement" layoutX="105.0" layoutY="14.0" text="List vetements" />
+      <Label fx:id="lblType" layoutX="478.0" layoutY="86.0" text="Type" />
+      <Label fx:id="lblListVetement1" layoutX="101.0" layoutY="306.0" text="List Chaussures" />
+      <ListView fx:id="listChaussure" layoutX="15.0" layoutY="335.0" prefHeight="229.0" prefWidth="291.0" />
+      <Label fx:id="lblListAccessoire" layoutX="100.0" layoutY="628.0" text="List Accessoires" />
+      <ListView fx:id="listAccessoire" layoutX="15.0" layoutY="656.0" prefHeight="229.0" prefWidth="291.0" />
+      <TextField fx:id="textFieldName" layoutX="659.0" layoutY="113.0" />
+      <Label fx:id="lblNom" layoutX="697.0" layoutY="86.0" text="Nom du produit" />
+      <TextField fx:id="textFieldPrix" layoutX="659.0" layoutY="219.0" />
+      <Label fx:id="lblPrix" layoutX="709.0" layoutY="192.0" text="Prix produit" />
+      <TextField fx:id="textFieldNbExemplaires" layoutX="659.0" layoutY="328.0" />
+      <Label fx:id="lblNbExemplaires" layoutX="650.0" layoutY="298.0" text="Nombre d'exemplaires du produit" />
+      <Label fx:id="lblRecetteView" layoutX="946.0" layoutY="130.0" text="Recette" textFill="#329a22">
+         <font>
+            <Font size="37.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblRecetteSet" layoutX="947.0" layoutY="207.0" text="0" textFill="#12e486">
+         <font>
+            <Font size="72.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblCostView" layoutX="969.0" layoutY="404.0" text="Cost" textFill="#c6150f">
+         <font>
+            <Font size="37.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblCostSet" layoutX="947.0" layoutY="475.0" text="0" textFill="RED">
+         <font>
+            <Font size="72.0" />
+         </font>
+      </Label>
+      <Button fx:id="BtnCancel" layoutX="1066.0" layoutY="860.0" mnemonicParsing="false" onAction="#onCancel" text="Cancel" />
+      <Button fx:id="BtnSupprimer" layoutX="456.0" layoutY="396.0" mnemonicParsing="false" onAction="#onDelete" text="Supprimer" />
+      <Button fx:id="BtnAjouter" layoutX="711.0" layoutY="396.0" mnemonicParsing="false" onAction="#onAjout" text="Ajouter" />
+      <Button fx:id="BtnVendre" layoutX="561.0" layoutY="672.0" mnemonicParsing="false" onAction="#vendre" text="Vendre" />
+      <Button fx:id="BtnModifier" layoutX="592.0" layoutY="396.0" mnemonicParsing="false" onAction="#onModify" text="Modifier" />
+      <Button fx:id="BtnRemise" layoutX="592.0" layoutY="860.0" mnemonicParsing="false" onAction="#onRemise" text="Appliquer remise" />
+      <Button fx:id="BtnAcheter" layoutX="650.0" layoutY="672.0" mnemonicParsing="false" onAction="#acheter" text="Acheter" />
+      <TextField fx:id="textFieldNbExemplaires2" layoutX="430.0" layoutY="616.0" />
+      <Label fx:id="lblNbExemplaires2" layoutX="423.0" layoutY="587.0" text="Nombre d'exemplaires demandé" />
+      <Slider fx:id="sliderTaille" blockIncrement="2.0" layoutX="422.0" layoutY="213.0" max="54.0" min="34.0" showTickLabels="true" showTickMarks="true" value="34.0" />
+      <Label fx:id="lblTaille" layoutX="478.0" layoutY="193.0" text="Taille" />
+      <Slider fx:id="sliderPointure" blockIncrement="1.0" layoutX="423.0" layoutY="319.0" max="50.0" min="36.0" showTickLabels="true" showTickMarks="true" value="36.0">
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+      </Slider>
+      <Label fx:id="lblPointure" layoutX="470.0" layoutY="298.0" text="Pointure" />
+      <Label fx:id="lblBilanView" layoutX="968.0" layoutY="614.0" text="Bilan" textFill="#eecb01">
+         <font>
+            <Font size="37.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblBilanSet" layoutX="947.0" layoutY="692.0" text="0" textFill="#fff200">
+         <font>
+            <Font size="72.0" />
+         </font>
+      </Label>
+      <TextField fx:id="textFieldPrix2" layoutX="680.0" layoutY="615.0" />
+      <Label fx:id="lblPrix2" layoutX="728.0" layoutY="587.0" text="Prix d'achat" />
+   </children>
+</AnchorPane>

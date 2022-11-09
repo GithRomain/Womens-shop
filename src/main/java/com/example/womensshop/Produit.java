@@ -36,17 +36,7 @@ public abstract class Produit implements Solde, Comparable<Produit>{
     /**
      * recette représente le nombre total des recettes du magasin
      */
-    private static int recette = 0;
-    /**
-     * produitcollection représente une collection de tous les produits créés trié par Type (ajout automatique)
-     */
-    private static List<List<Produit>> produitList = new ArrayList<>(){
-        {
-            add(new LinkedList<>());
-            add(new LinkedList<>());
-            add(new LinkedList<>());
-        }
-    };
+    private static double recette = 0;
     /**
      * cost représente tous l'argent que le magasin dépense
      */
@@ -60,7 +50,7 @@ public abstract class Produit implements Solde, Comparable<Produit>{
      * @param nbExemmplaires positif
      * @exception IllegalArgumentException
      */
-    public Produit(String nom, double prix, int nbExemmplaires){
+    public Produit(String nom, double prix, int nbExemmplaires) throws IllegalArgumentException{
         if (prix < 0){
             throw new IllegalArgumentException("Prix négatif");
         } else if (nbExemmplaires < 0) {
@@ -69,10 +59,24 @@ public abstract class Produit implements Solde, Comparable<Produit>{
         this.nom = nom;
         this.prix = prix;
         this.nbExemplaires = nbExemmplaires;
-        //ajout du produit créé à la collection
-        if (Vetement.class.equals(getClass())) produitList.get(0).add(this);
-        else if (Chaussure.class.equals(getClass())) produitList.get(1).add(this);
-        else if (Accessoire.class.equals(getClass()))  produitList.get(2).add(this);
+    }
+    /**
+     * Constructeur à paramèrtre d'un produit
+     * @param num
+     * @param nom
+     * @param prix
+     * @param nbExemmplaires
+     */
+    public Produit(int num, String nom, double prix, int nbExemmplaires) throws IllegalArgumentException{
+        if (prix < 0){
+            throw new IllegalArgumentException("Prix négatif");
+        } else if (nbExemmplaires < 0) {
+            throw new IllegalArgumentException("Nombre d'exemplaire négatif");
+        }
+        this.num = num;
+        this.nom = nom;
+        this.prix = prix;
+        this.nbExemplaires = nbExemmplaires;
     }
 
     //Getters
@@ -108,15 +112,8 @@ public abstract class Produit implements Solde, Comparable<Produit>{
      * Getter de l'attribut recette
      * @return la valeur de l'attribut recette
      */
-    public static int getRecette() {
+    public static double getRecette() {
         return recette;
-    }
-    /**
-     * Getter de l'attribut produitList
-     * @return la collection produitList
-     */
-    public static List<List<Produit>> getProduitList() {
-        return produitList;
     }
     /**
      * Getter de l'attribut cost
@@ -146,7 +143,7 @@ public abstract class Produit implements Solde, Comparable<Produit>{
      * @param prix
      * @exception IllegalArgumentException
      */
-    public void setPrix(double prix) {
+    public void setPrix(double prix) throws IllegalArgumentException{
         if (prix < 0){
             throw new IllegalArgumentException("Prix négatif");
         }
@@ -157,7 +154,7 @@ public abstract class Produit implements Solde, Comparable<Produit>{
      * @param nbExemplaires
      * @exception IllegalArgumentException
      */
-    public void setNbExemplaires(int nbExemplaires) {
+    public void setNbExemplaires(int nbExemplaires) throws IllegalArgumentException{
         if (nbExemplaires < 0){
             throw new IllegalArgumentException("Nombre d'exemplaire négatif");
         }
@@ -167,15 +164,8 @@ public abstract class Produit implements Solde, Comparable<Produit>{
      * Le setter de recette
      * @param recette
      */
-    public static void setRecette(int recette) {
+    public static void setRecette(double recette) {
         Produit.recette = recette;
-    }
-    /**
-     * Le setter de produitList
-     * @param produitList
-     */
-    public static void setProduitList(List<List<Produit>> produitList) {
-        Produit.produitList = produitList;
     }
     /**
      * Le setter de cost
@@ -190,7 +180,7 @@ public abstract class Produit implements Solde, Comparable<Produit>{
      * @param nbEx positif et inférieur à nbExemplaire
      * @exception IllegalArgumentException
      */
-    public void vendre(int nbEx) {
+    public void vendre(int nbEx) throws IllegalArgumentException{
         if (nbEx < 0) {
             throw new IllegalArgumentException("Nombre demandé à la vente érroné");
         }
@@ -201,16 +191,19 @@ public abstract class Produit implements Solde, Comparable<Produit>{
         recette += nbEx * prix;
     }
     /**
-     * Méthode d'achat d'un produit qui actualise l'attribu nbExemplaire
+     * Méthode d'achat d'un produit qui actualise l'attribut nbExemplaire
      * @param nbEx positif
      * @exception IllegalArgumentException
      */
-    public void achat(int nbEx, double purchasePrice) {
+    public void achat(int nbEx, double purchasePrice) throws IllegalArgumentException{
         if (nbEx < 0){
             throw new IllegalArgumentException("Nombre demandé à l'achat erroné");
         }
         if (purchasePrice >= prix){
             throw new IllegalArgumentException("Prix d'achat plus cher que le prix de vente");
+        }
+        if (purchasePrice < 0){
+            throw new IllegalArgumentException("Prix d'achat négatif");
         }
         nbExemplaires += nbEx;
         cost += nbEx * purchasePrice;
@@ -235,22 +228,12 @@ public abstract class Produit implements Solde, Comparable<Produit>{
         return Double.compare(this.prix, produit.prix);
     }
     /**
-     * Méthode pour trier l'attribut produitList grâce à la fonction de comparaison compareTo
-     */
-    public static void sortList(){
-        for (List<Produit> produitCollection : produitList){
-            Collections.sort(produitCollection);
-        }
-    }
-    /**
      * La méthode toString
      * @return la représentation de l'objet Produit en chaîne de charactères
      */
     @Override
     public String toString() {
-        return  getClass().toString().substring(29) +
-                "\n{" +
-                "\nnom: " + nom +
+        return "nom: " + nom +
                 "\nprix: " + prix +
                 "\nnbExemmplaires: " + nbExemplaires;
     }

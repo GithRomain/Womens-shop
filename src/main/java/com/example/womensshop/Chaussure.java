@@ -36,6 +36,22 @@ public class Chaussure extends Produit{
         this.pointure = pointure;
     }
 
+    /**
+     * Constructeur à paramètre de Chaussure + num de type Produit
+     * @param num
+     * @param nom
+     * @param prix
+     * @param nbExemmplaires
+     * @param pointure
+     */
+    public Chaussure(int num, String nom, double prix, int nbExemmplaires, int pointure) {
+        super(num, nom, prix, nbExemmplaires);
+        if (pointure < 36 || pointure > 50){
+            throw new IllegalArgumentException("Pointure erronée");
+        }
+        this.pointure = pointure;
+    }
+
     //Getters
     /**
      * Getter de l'attribut pointure
@@ -65,7 +81,6 @@ public class Chaussure extends Produit{
     @Override
     public String toString() {
         return  super.toString() +
-                "\npointure: " + pointure +
-                "\n}";
+                "\npointure: " + pointure;
     }
 }

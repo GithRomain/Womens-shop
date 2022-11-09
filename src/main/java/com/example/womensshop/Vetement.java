@@ -36,6 +36,22 @@ public class Vetement extends Produit{
         this.taille = taille;
     }
 
+    /**
+     * Constructeur à paramètre + num de vetement de type Produit
+     * @param num
+     * @param nom
+     * @param prix
+     * @param nbExemmplaires
+     * @param taille
+     */
+    public Vetement(int num, String nom, double prix, int nbExemmplaires, int taille) {
+        super(num, nom, prix, nbExemmplaires);
+        if (taille < 34 || taille > 54 || taille % 2 != 0){
+            throw new IllegalArgumentException("Taille erronée");
+        }
+        this.taille = taille;
+    }
+
     //Getters
     /**
      * Getter de l'attribut taille
@@ -65,7 +81,6 @@ public class Vetement extends Produit{
     @Override
     public String toString() {
         return  super.toString() +
-                "\ntaille: " + taille +
-                "\n}";
+                "\ntaille: " + taille;
     }
 }
