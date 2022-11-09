@@ -10,3 +10,7 @@ And change this line (l22) with your user and password to connect ure own mySQL 
 
 ---
     return DriverManager.getConnection("jdbc:mysql://localhost:3306/womensShop?serverTimezone=Europe%2FParis", "user","password");
+    
+The SQL code is in :
+---
+    BDD.sql
