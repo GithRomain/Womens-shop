@@ -1,3 +1,9 @@
+/**
+ * Ce projet est créé pour gérer un magasin de femme
+ * @author romainpasquier
+ * @version 1.0
+ * @since 2022
+ */
 module com.example.womensshop {
     requires javafx.controls;
     requires javafx.fxml;

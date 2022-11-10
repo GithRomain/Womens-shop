@@ -217,7 +217,7 @@ public class DBManager {
      * @param newNbExemplaires
      * @param newTaille
      * @param newPointure
-     * @exception Exception
+     * @exception SQLException
      */
     public void updateProduct(Produit produit, Object newNom, Object newPrix, Object newNbExemplaires, Object newTaille, Object newPointure) throws SQLException {
         Connection myConn = null;
